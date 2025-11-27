@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Cálculos de RH{% endblock %}
+
+{% block content %}
+<div class="glass-box admin-panel">
+    <p class="panel-title">Escolha o Tipo de Cálculo</p>
+    
+    <a href="{% url 'contracheque' %}" class="admin-option-button" style="text-decoration: none; display: flex; justify-content: center; align-items: center;">
+        Contracheque
+    </a>
+    
+    <a href="{% url 'rescisao' %}" class="admin-option-button" style="text-decoration: none; display: flex; justify-content: center; align-items: center; margin-top: 10px;">
+        Rescisão de Contrato
+    </a>
+    
+    <a href="{% url 'home' %}" class="submit-button" style="margin-top: 20px; text-decoration: none;">
+        ← Voltar
+    </a>
+</div>
+{% endblock %}

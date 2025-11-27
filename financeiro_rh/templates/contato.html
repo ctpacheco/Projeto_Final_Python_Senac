@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Contato{% endblock %}
+
+{% block content %}
+<form class="glass-box" method="post">
+    {% csrf_token %}
+
+    <p class="panel-title">Quero fazer um orçamento</p>
+    
+    <label for="name">Nome:</label>
+    <input type="text" id="name" name="name" required>
+    
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="mensagem">Messagem</label>
+    <textarea name="mensagem" id="mensagem"></textarea>
+    
+    
+    <button type="submit" class="submit-button">
+        →
+    </button>
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+{% if messages %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            {% for message in messages %}
+                Swal.fire({
+                    title: 'Sucesso!',
+                    text: '{{ message }}', // Pega o texto "Obrigado, [Nome]..."
+                    icon: 'success',
+                    confirmButtonText: 'Legal!',
+                    confirmButtonColor: '#6a11cb', // Roxo do seu tema
+                    background: '#f0f8ff',
+                    backdrop: `rgba(0,0,123,0.4)`
+                });
+            {% endfor %}
+        });
+    </script>
+{% endif %}
+
+{% endblock %}

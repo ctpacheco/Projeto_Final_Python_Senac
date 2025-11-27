@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalculaColab - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    
+    
+    <header class="header">
+        <h1 class="logo-main">CalculaColab<span class="logo-icon">💵</span></h1>
+
+        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+        
+        <div id="nav-container" class="nav-container">
+            {% include 'partials/navbar.html' %}
+        </div>
+        
+    </header>
+
+    <main class="main-content">
+        {% block content %}
+
+            {% endblock %}
+    </main>
+
+    {% block extra_js %}
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navContainer = document.getElementById('nav-container');
+
+        menuToggle.addEventListener('click', () => {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            navContainer.classList.toggle('is-open');
+        });
+    </script>
+    {% endblock %}
+    
+</body>
+</html>
